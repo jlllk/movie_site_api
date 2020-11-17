@@ -1,4 +1,4 @@
-![example workflow file path](https://github.com/jlllk/yamdb_final/workflows/.github/workflows/yamdb.yaml/badge.svg)
+![example workflow file path](https://github.com/jlllk/yamdb_final/.github/workflows/yamdb.yaml/badge.svg)
 
 # YaMDb
 
