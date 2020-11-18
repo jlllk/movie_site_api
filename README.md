@@ -1,4 +1,4 @@
-![YaMDB workflow](https://github.com/jlllk/yamdb_final/workflows/yamdb_workflow/badge.svg)
+https://github.com/jlllk/yamdb_final/workflows/yamdb_workflow/badge.svg
 # YaMDb
 
 YaMDb — веб-сайт о кинематографе, на котором пользователи могут оставлять оценки и отзывы к фильмам и сериалам.
