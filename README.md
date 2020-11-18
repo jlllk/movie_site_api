@@ -1,4 +1,4 @@
-![yamdb_worflow](https://github.com/jlllk/yamdb_final/.github/workflows/yamdb.yaml/badge.svg)
+![yamdb_worflow](https://github.com/jlllk/yamdb_final/workflows/yamdb/badge.svg)
 
 # YaMDb
 
