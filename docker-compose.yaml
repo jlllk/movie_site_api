@@ -12,7 +12,7 @@ services:
     env_file:
       - ./.env
   web:
-    build: .
+    image: jllllk/yamdb_ninal:latest
     restart: always
     volumes:
       - static_volume:/code/static
