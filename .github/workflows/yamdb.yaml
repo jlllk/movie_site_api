@@ -58,14 +58,15 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            sudo docker stop django
+            sudo docker image rm jllllk/yamdb
             sudo docker pull jllllk/yamdb
-            sudo docker-compose down -v
-            sudo docker-compose up -d
+            docker container run jllllk/yamdb
 
   send_message:
     runs-on: ubuntu-latest
     needs: deploy
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: send message
         uses: appleboy/telegram-action@master
