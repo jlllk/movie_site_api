@@ -58,8 +58,7 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo docker-compose kill web
-            sudo docker-compose run web
+            sudo docker-compose up --force-recreate --no-deps -d web
             sudo docker image prune -f
 
   send_message:
