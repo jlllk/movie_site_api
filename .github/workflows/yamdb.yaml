@@ -61,7 +61,7 @@ jobs:
             sudo docker stop django
             sudo docker image rm jllllk/yamdb
             sudo docker pull jllllk/yamdb
-            docker container run jllllk/yamdb
+            sudo docker container run jllllk/yamdb
 
   send_message:
     runs-on: ubuntu-latest
