@@ -59,7 +59,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             sudo docker-compose kill web
-            sudo docker-cmpose run web
+            sudo docker-compose run web
             sudo docker image prune -f
 
   send_message:
