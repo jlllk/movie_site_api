@@ -7,28 +7,31 @@ volumes:
 services:
   db:
     image: postgres:12.0
+    container_name: postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./.env
   web:
     image: jllllk/yamdb:latest
+    container_name: django
     restart: always
     volumes:
       - static_volume:/code/static
-    expose:
-      - 8000
+    ports:
+      - '8000:8000'
     depends_on:
       - db
     env_file:
       - ./.env
   nginx:
-    build:
-      context: .
-      dockerfile: Dockerfile_nginx
+    image: nginx:1.19.4
+    container_name: webserver
+    restart: unless-stopped
     volumes:
+      - ./nginx/:/etc/nginx/conf.d
       - static_volume:/code/static
     ports:
-      - 8000:80
+      - '80:80'
     depends_on:
       - web

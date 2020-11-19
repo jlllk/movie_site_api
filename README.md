@@ -45,11 +45,6 @@ docker exec -ti infra_sp2_web_1 python manage.py createsuperuser
 docker exec -ti infra_sp2_web_1 python manage.py loaddata data.xml
 ```
 
-Сайт доступен по адресу
-```
-http://localhost:8000/
-```
-
 ## Использованные технологии
 
 * [Python](https://www.python.org/) - Язык программирования
