@@ -58,10 +58,9 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo docker stop django
-            sudo docker image rm jllllk/yamdb
-            sudo docker pull jllllk/yamdb
-            sudo docker container run jllllk/yamdb
+            sudo docker-compose kill web
+            sudo docker-cmpose run web
+            sudo docker image prune -f
 
   send_message:
     runs-on: ubuntu-latest
