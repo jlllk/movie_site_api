@@ -1,4 +1,4 @@
-name: yamdb workflow
+name: yamdb
 
 on: [push]
 
@@ -22,13 +22,14 @@ jobs:
       run: flake8 .
 
     - name: Test with pytest
-      run: pytest tests.py
+      run: pytest
 
 
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     needs: tests
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -48,6 +49,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
@@ -56,13 +58,14 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo docker pull jllllk/yamdb
-            sudo docker-compose down -v
-            docker-compose up -d --build
+            sudo docker pull jllllk/yamdb:latest
+            sudo docker-compose up --force-recreate --no-deps -d web
+            sudo docker image prune -f
 
   send_message:
     runs-on: ubuntu-latest
     needs: deploy
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: send message
         uses: appleboy/telegram-action@master
